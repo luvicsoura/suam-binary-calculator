@@ -1,0 +1,23 @@
+.container {
+    margin-top: 200px;
+}
+
+.bg-primary, .bg-success, .bg-dark {
+    color: white;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-size: 1.5rem;
+    box-shadow: 1px 1px 5px 2px #ccc;
+    min-height: 50px;
+}
+
+.result p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    padding: 10px;
+}

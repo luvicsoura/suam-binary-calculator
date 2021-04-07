@@ -12,6 +12,19 @@ export class HistoryComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  historyList:Array<string> = ['1 + 1', '111 + 11', '101 + 10101', '11111 + 1010101'];
+  result:number = 0;
+  selectedIndex:number = null;
 
+  historyList:Array< {list: Array<string>, sum: string} > = [
+    {list: ['1110', '1001010', '11101'], sum: '1000'},
+    {list: ['1111', '1', '111'], sum: '1111111111'}
+  ];
+
+  setIndex(index: number) {
+    this.selectedIndex = index;
+  }
+
+  getCalculatedResult():string {
+    return this.historyList[this.selectedIndex]?.sum;
+  }
 }
