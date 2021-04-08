@@ -15,9 +15,9 @@ export class HistoryComponent implements OnInit {
   result:number = 0;
   selectedIndex:number = null;
 
-  historyList:Array< {list: Array<string>, sum: string} > = [
-    {list: ['1110', '1001010', '11101'], sum: '1000'},
-    {list: ['1111', '1', '111'], sum: '1111111111'}
+  historyList:Array< {addends: Array<string>, result: string} > = [
+    {addends: ['1110', '1001010', '11101'], result: '1000'},
+    {addends: ['1111', '1', '111'], result: '1111111111'}
   ];
 
   setIndex(index: number) {
@@ -25,6 +25,6 @@ export class HistoryComponent implements OnInit {
   }
 
   getCalculatedResult():string {
-    return this.historyList[this.selectedIndex]?.sum;
+    return this.historyList[this.selectedIndex]?.result;
   }
 }

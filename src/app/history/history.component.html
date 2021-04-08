@@ -5,7 +5,7 @@
                 <ul class="p-0">
                     <label class="list-group-item bg-dark">Histórico</label>
                     <li class="list-group-item list-group-item-action" *ngFor="let item of historyList; let i = index" [ngClass]="selectedIndex === i ? 'bg-primary' : ''" (click)="setIndex(i)">
-                        {{item.list.join('+')}}
+                        {{item.addends.join('+')}}
                     </li>
                 </ul>       
             </div>
