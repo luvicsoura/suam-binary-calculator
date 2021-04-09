@@ -1,0 +1,41 @@
+<div class="w-100 m-0 mb-3 row">
+  <div class="w-100 p-3 bg-dark text-white">
+    {{ result }}
+  </div>
+</div>
+<div class="w-100 m-0 row">
+  <div class="d-flex flex-wrap col-8 p-0">
+    <button
+      (click)="insert('0')"
+      class="col m-1 btn btn-light"
+    >
+      0
+    </button>
+    <button
+      (click)="insert('1')"
+      class="col m-1 btn btn-light"
+    >
+      1
+    </button>
+    <button
+      (click)="confirmNumber()"
+      class="w-100 m-1 btn btn-success"
+    >
+      +
+    </button>
+  </div>
+  <div class="col-4 p-0">
+    <button
+      (click)="confirmNumber(); evaluate()"
+      class="w-100 m-1 btn btn-primary"
+    >
+      =
+    </button>
+    <button
+      (click)="clear()"
+      class="w-100 m-1 btn btn-danger"
+    >
+      C
+    </button>
+  </div>
+</div>
