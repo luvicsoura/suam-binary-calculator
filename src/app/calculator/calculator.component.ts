@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HistoryOperation } from '../history/history.operation';
+import { HistoryService } from '../history/history.service';
 import { CalculatorService } from './calculator.service';
 
 const DEFAULT_CURRENT_INPUT = '0';
@@ -15,9 +17,11 @@ export class CalculatorComponent implements OnInit {
 
   private inputs: string[] = [];
   private currentInput: string;
+  private evaluated: boolean = false;
 
   constructor(
-    private calculatorService: CalculatorService
+    private calculatorService: CalculatorService,
+    private historyService: HistoryService
   ) {
     this.resetInput();
     this.resetResult();
@@ -27,6 +31,7 @@ export class CalculatorComponent implements OnInit {
   }
 
   insert(input: string) {
+    if (this.evaluated) this.resetInputs();
     this.currentInput = this.sanitizeInput(
       this.currentInput.concat(input)
     );
@@ -35,7 +40,10 @@ export class CalculatorComponent implements OnInit {
   }
 
   confirmNumber = () => {
-
+    if (this.evaluated) {
+      this.currentInput = this.result;
+      this.resetInputs();
+    }
     this.inputs.push(this.currentInput);
     this.resetInput();
     this.resetResult();
@@ -43,8 +51,18 @@ export class CalculatorComponent implements OnInit {
 
   evaluate = () => {
     const result = this.calculatorService.add(...this.inputs);
-    console.log({result})
     this.result = result;
+    this.updateHistory(this.inputs, this.result);
+    this.evaluated = true;
+  }
+
+  updateHistory(operands, result) {
+
+    const operation: HistoryOperation = {
+      operands: [...operands],
+      result: result
+    }
+    this.historyService.addOperationToHistory(operation)
   }
 
   clear = () => {
@@ -63,6 +81,7 @@ export class CalculatorComponent implements OnInit {
 
   private resetInputs() {
     this.inputs = [];
+    this.evaluated = false;
   }
 
   private sanitizeInput(input) {

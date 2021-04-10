@@ -3,21 +3,29 @@
         <div class="col-sm-8">
             <div class="list-group" id="list-tab" role="tablist">
                 <ul class="p-0">
-                    <label class="list-group-item bg-dark">Histórico</label>
-                    <li class="list-group-item list-group-item-action" *ngFor="let item of historyList; let i = index" [ngClass]="selectedIndex === i ? 'bg-primary' : ''" (click)="setIndex(i)">
-                        {{item.addends.join('+')}}
+                    <label class="list-group-item bg-dark d-flex justify-content-between align-items-center">
+                      Histórico
+                      <button
+                        type="button"
+                        class="btn btn-danger"
+                        style="line-height: 1;"
+                        (click)="clear()"
+                      >
+                        <i class="material-icons">
+                          delete
+                        </i>
+                      </button>
+                    </label>
+                    <li
+                      class="list-group-item list-group-item-action"
+                      *ngFor="let entry of (historyList | async)"
+                    >
+                      {{ entry.operands.join(' + ') + ' = ' }}
+                      <span>
+                        {{ entry.result }}
+                      </span>
                     </li>
-                </ul>       
-            </div>
-        </div>
-        <div class="col-sm-4 result-container">
-            <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-                    <label class="list-group-item bg-success">Resultado</label>
-                    <div class="result">
-                        <p>{{getCalculatedResult()}}</p>
-                    </div>
-                </div>
+                </ul>
             </div>
         </div>
     </div>

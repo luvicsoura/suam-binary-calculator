@@ -1,0 +1,19 @@
+<div class='row justify-content-center'>
+  <div
+    *ngFor="let member of teamMembers"
+    class="card m-2"
+    style="width: 18rem;"
+  >
+    <img
+      class="card-img-top "
+      [src]="member.pictureUrl"
+      alt="card grupo"
+    >
+    <div class="card-body">
+      <h5 class="Card title">{{ member.name }}</h5>
+      <p class="card-text">
+        <span style="text-decoration: underline;">{{ member.id }}</span>
+      </p>
+    </div>
+  </div>
+</div>

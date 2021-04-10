@@ -3,16 +3,22 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HistoryComponent } from './history/history.component';
+import { CreditsComponent } from './credits/credits.component';
+import { MenuModule } from './core/menu/menu.module';
+import { HistoryModule } from './history/history.module';
+import { FooterModule } from './core/footer/footer.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HistoryComponent
+    CreditsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HistoryModule,
+    MenuModule,
+    FooterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
