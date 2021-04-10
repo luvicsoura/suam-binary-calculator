@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { MenuOption } from './menu-option';
+import { MENU_OPTIONS } from './menu-options';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent {
 
-  constructor() { }
+  options: MenuOption[] = MENU_OPTIONS
 
-  ngOnInit(): void {
+  constructor(private router: Router) {
   }
 
+  isActiveRoute(route) {
+    return this.router.url === route;
+  }
 }

@@ -1,32 +1,30 @@
 <div class="container">
     <div class="row">
-        <div class="col-sm-8">
-            <div class="list-group" id="list-tab" role="tablist">
-                <ul class="p-0">
-                    <label class="list-group-item bg-dark d-flex justify-content-between align-items-center">
-                      Histórico
-                      <button
-                        type="button"
-                        class="btn btn-danger"
-                        style="line-height: 1;"
-                        (click)="clear()"
-                      >
-                        <i class="material-icons">
-                          delete
-                        </i>
-                      </button>
-                    </label>
-                    <li
-                      class="list-group-item list-group-item-action"
-                      *ngFor="let entry of (historyList | async)"
+          <div class="list-group w-100" id="list-tab" role="tablist">
+              <ul class="p-0">
+                  <label class="list-group-item bg-dark d-flex justify-content-between align-items-center">
+                    Histórico
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      style="line-height: 1;"
+                      (click)="clear()"
                     >
-                      {{ entry.operands.join(' + ') + ' = ' }}
-                      <span>
-                        {{ entry.result }}
-                      </span>
-                    </li>
-                </ul>
-            </div>
-        </div>
+                      <i class="material-icons">
+                        delete
+                      </i>
+                    </button>
+                  </label>
+                  <li
+                    class="list-group-item list-group-item-action"
+                    *ngFor="let entry of (historyList | async)"
+                  >
+                    {{ entry.operands.join(' + ') + ' = ' }}
+                    <span>
+                      {{ entry.result }}
+                    </span>
+                  </li>
+              </ul>
+          </div>
     </div>
 </div>

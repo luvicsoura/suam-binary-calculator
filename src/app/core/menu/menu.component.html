@@ -1,18 +1,13 @@
 <nav class="navbar navbar-dark bg-primary d-flex">
-  <a
-    class="d-inline-flex flex-grow-1 justify-content-center text-white"
-    routerLink=""
+  <button
+    *ngFor="let option of options"
+    class="d-inline-flex flex-grow-1 justify-content-center text-white border-0 bg-transparent"
+    [class]="isActiveRoute(option.route) ? 'text-black-50' : ''"
+    [routerLink]="option.route"
+    [disabled]="isActiveRoute(option.route)"
   >
     <i class="material-icons">
-      home
+      {{ option.icon }}
     </i>
-  </a>
-  <a
-    class="d-inline-flex flex-grow-1 justify-content-center text-white"
-    routerLink="/history"
-  >
-    <i class="material-icons">
-      history
-    </i>
-  </a>
+  </button>
 </nav>
